@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   const { RestClient, NftLoanSummaryRequest } = require("@hellomoon/api")
   const client = new RestClient(process.env.HELLOMOON_BEARER_TOKEN);
   const response = await client.send(new NftLoanSummaryRequest({
-    "lender": "5hwJtfuFAVJMsVGkgk5k7UYh9o2hz1gDAtjXFKcpenGn"
+    "lender": publicKey
   }))
   const loans = response.data;
   const nftAddresses = [...new Set(loans.map((l: any) => l.collateralMint))].filter(m => m !== '')
