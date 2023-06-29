@@ -3,14 +3,14 @@
 import './globals.css'
 require('@solana/wallet-adapter-react-ui/styles.css')
 
-import { Client as Styletron } from 'styletron-engine-atomic';
 import { Provider as StyletronProvider } from 'styletron-react';
 
 import { DarkTheme, BaseProvider, styled } from 'baseui';
 
 import WalletContextProvider from './components/WalletContextProvider'
 
-const engine = new Styletron();
+import {styletron} from '../styletron';
+
 
 export default function RootLayout({
   children,
@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StyletronProvider value={engine}>
+        <StyletronProvider value={styletron}>
           <BaseProvider theme={DarkTheme}>
             <WalletContextProvider>
               {children}

@@ -8,11 +8,19 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const network = WalletAdapterNetwork.Mainnet;
+  const wallets = useMemo(
+    () => [
+      new PhantomWalletAdapter(),
+      new GlowWalletAdapter()
+    ],
+    [network]
+  );
+
   const endpoint = useMemo(() => web3.clusterApiUrl(network), [network]);
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={[]}>
+      <WalletProvider wallets={wallets}>
         <WalletModalProvider>
           { children }
         </WalletModalProvider>
