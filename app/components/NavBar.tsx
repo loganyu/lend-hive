@@ -11,6 +11,7 @@ export default () => {
   return (
     <HeaderNavigation>
       <StyledNavigationList $align={ALIGN.left}>
+        <img style={{height: "50px", paddingLeft:"30px"}} src="/logo.png" />
         <StyledNavigationItem>LendHive</StyledNavigationItem>
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.center} />
